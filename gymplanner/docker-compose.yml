@@ -1,0 +1,40 @@
+
+
+services:
+  db:
+    image: postgres:15
+    container_name: gymplanner_db
+    environment:
+      POSTGRES_DB: gymplanner
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5433:5432"
+    volumes:
+      - gymplanner_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d gymplanner"]
+      interval: 8s
+      timeout: 8s
+      retries: 5
+      
+
+  app:
+    build: .
+    container_name: gymplanner_backend
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/gymplanner
+      SPRING_DATASOURCE_USERNAME: ${DB_USER}
+      SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    restart: on-failure
+
+volumes:
+  gymplanner_db_data:
