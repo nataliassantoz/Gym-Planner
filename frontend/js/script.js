@@ -25,6 +25,7 @@ btnCadastro.addEventListener("click", () => {
     btnLogin.classList.remove("active");
 });
 
+
 btnSubmit.addEventListener("click", async (e) => {
     e.preventDefault();
 
@@ -42,31 +43,30 @@ btnSubmit.addEventListener("click", async (e) => {
 
     const payload = modo === "login"
     ? { email, senha }
-    : { nome, email, senha, tipo: "USUARIO" };
+    : { nome, email, senha, tipo: "CLIENTE" };
 
 
     try{
+
         const resposta = await fetch(url, {
             method: "POST",
-            headers: {"Content-type": "application/json"},
+            headers: {
+                "Content-type": "application/json"
+            },
             body: JSON.stringify(payload)
-        })
+        });
 
         const dados = await resposta.json();
 
         if(resposta.ok){
-
             alert(dados.mensagem + "\nBem-vindo, " +  (dados.nome || nome));
-
-            //redicionando para outra pagina
-            //em construcao...
         }
         else{
-            alert("Erro: " + (dados.erro || "Tente novamente"));
+            alert("Erro: " + (dados.erro || dados.message || "Tente novamente"));
         }
     }
     catch(error){
-        alert("Erro na requisição " + error);
+        alert("Erro na requisição" + error);
     }
 
 
