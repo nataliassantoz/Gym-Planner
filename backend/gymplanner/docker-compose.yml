@@ -17,10 +17,12 @@ services:
       interval: 8s
       timeout: 8s
       retries: 5
+    
       
 
   app:
     build: .
+    
     container_name: gymplanner_backend
     depends_on:
       db:
@@ -35,6 +37,8 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${DB_PASSWORD}
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
     restart: on-failure
-
+    cpu_quota: 200000
+    cpu_period: 100000
+    
 volumes:
   gymplanner_db_data:
