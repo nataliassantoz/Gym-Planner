@@ -27,26 +27,34 @@ public class AutenticacaoController {
         this.autenticacaoService = autenticacaoService;
     }
 
-    
+    @CrossOrigin(origins = "*")
     @PostMapping("/registro")
-    public ResponseEntity<LoginResponse> cadastrar(@RequestBody RegistroRequest request){
+    public ResponseEntity<?> cadastrar(@RequestBody RegistroRequest request){
 
-        Usuario novoUsuario = autenticacaoService.cadastrar(
-            request.getEmail(),
-            request.getNome(),
-            request.getSenha(),
-            request.getTipo()
-        );
+        try{
+            Usuario novoUsuario = autenticacaoService.cadastrar(
+                request.getEmail(),
+                request.getNome(),
+                request.getSenha(),
+                request.getTipo()
+            );
 
-        LoginResponse resposta = new LoginResponse(
-            "Cadastro bem sucedido!",
-            novoUsuario.getNome()
-        );
-        
-        return ResponseEntity.ok(resposta);
-        
+            //retornando o id para a criacao de  perfil ***
+            LoginResponse resposta = new LoginResponse(
+                "Cadastro bem sucedido!",
+                novoUsuario.getNome(),
+                novoUsuario.getId()
+            );
+            
+            
+            return ResponseEntity.ok(resposta);
+        }
+        catch(RuntimeException e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErroResponse(e.getMessage()));
+        }
     }
 
+    @CrossOrigin(origins = "*")
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest request){
 
@@ -55,7 +63,8 @@ public class AutenticacaoController {
 
            LoginResponse resposta = new LoginResponse(
             "Login bem sucedido!",
-            usuario.getNome()
+            usuario.getNome(),
+            usuario.getId()
         );
         
             return ResponseEntity.ok(resposta);
@@ -65,5 +74,4 @@ public class AutenticacaoController {
 
         }
     }
-
 }
