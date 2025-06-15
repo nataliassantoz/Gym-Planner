@@ -1,6 +1,6 @@
 package com.example.gymplanner.enums;
 
-public enum NIvelAtividade {
+public enum NivelAtividade {
     SEDENTARIO,
     LEVE,
     MODERADO,

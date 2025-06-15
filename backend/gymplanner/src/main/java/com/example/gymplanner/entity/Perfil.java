@@ -1,6 +1,6 @@
 package com.example.gymplanner.entity;
 
-import com.example.gymplanner.enums.NIvelAtividade;
+import com.example.gymplanner.enums.NivelAtividade;
 import com.example.gymplanner.enums.Objetivo;
 import com.example.gymplanner.enums.Sexo;
 
@@ -30,7 +30,7 @@ public class Perfil {
     @Enumerated(EnumType.STRING)
     private Objetivo objetivo;
     @Enumerated(EnumType.STRING)
-    private NIvelAtividade nivel;
+    private NivelAtividade nivel;
 
     @OneToOne
     @JoinColumn(name= "usuario_id")
@@ -39,7 +39,7 @@ public class Perfil {
     public Perfil() {}
 
     public Perfil(Long id, Double altura, Double peso, Integer idade, Sexo sexo, Objetivo objetivo,
-            NIvelAtividade nivel, Usuario usuario) {
+            NivelAtividade nivel, Usuario usuario) {
         this.id = id;
         this.altura = altura;
         this.peso = peso;
@@ -99,11 +99,11 @@ public class Perfil {
         this.objetivo = objetivo;
     }
 
-    public NIvelAtividade getNivel() {
+    public NivelAtividade getNivel() {
         return nivel;
     }
 
-    public void setNivel(NIvelAtividade nivel) {
+    public void setNivel(NivelAtividade nivel) {
         this.nivel = nivel;
     }
 
