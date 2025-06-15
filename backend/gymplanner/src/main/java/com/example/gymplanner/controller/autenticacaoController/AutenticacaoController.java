@@ -38,15 +38,12 @@ public class AutenticacaoController {
                 request.getSenha(),
                 request.getTipo()
             );
-
             //retornando o id para a criacao de  perfil ***
             LoginResponse resposta = new LoginResponse(
                 "Cadastro bem sucedido!",
                 novoUsuario.getNome(),
-                novoUsuario.getId()
+                novoUsuario.getId()  //retorna o id pro front
             );
-            
-            
             return ResponseEntity.ok(resposta);
         }
         catch(RuntimeException e){
@@ -66,12 +63,10 @@ public class AutenticacaoController {
             usuario.getNome(),
             usuario.getId()
         );
-        
             return ResponseEntity.ok(resposta);
         }
         catch( RuntimeException e){
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(new ErroResponse(e.getMessage()));
-
         }
     }
 }
