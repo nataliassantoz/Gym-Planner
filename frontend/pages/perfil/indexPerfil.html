@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <title>Concluir perfil</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../../assets/css/perfil.css" />
+    </head>
+
+
+    <body>
+        <div class="conteiner"> 
+            <form class="perfil">
+                <h2 class="perfil-titulo"> Preencha seu Perfil </h2>
+
+                <div class="input-group">
+                    <label for="altura">Altura</label>
+                    <input type="number" id="altura" placeholder="Ex: 170" required>
+                    <span class="unit">cm</span>
+                </div>
+
+                <div  class="input-group">
+                    <label for="altura">Peso  </label>
+                    <input type="number" id="peso" placeholder="Ex: 56,5" required>    
+                     <label>kg</label>   
+                </div>
+
+                 <div class="input-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number"  name="idade" min="18" max="80" required >
+                    <label>anos</label>  
+                   
+                </div>
+
+                 <div>
+                    <label>Sexo:</label><br>
+
+                    <div cclass="input-group">
+                        <input type="radio" id="feminino" name="sexo" value="feminino"  required>
+                        <label for="feminino" > Feminino </label>
+                    </div>
+                    
+
+                    <div  class="input-group">
+                        <input type="radio" id="masculino" name="sexo" value="masculino">
+                        <label for="masculino">Masculino</label>
+                    </div>
+                    
+
+                    <div class="input-group">
+                        <input type="radio" id="outro" name="sexo" value="outro">
+                        <label for="outro">Outro</label>  
+                    </div>
+                    
+                </div>
+
+                 <div>
+                     <label>Objetivo:</label><br>
+
+                    <div class="input-group">
+                        <input type="radio" name="objetivo" value="emagrecimento"  required>
+                        <label for="Emagrecimento" > Emagrecimento </label>   
+                    </div>
+                   
+
+                    <div class="input-group">
+                        <input type="radio" id="masculino" name="objetivo" value="massa-magra">
+                        <label for="massa-magra">Massa magra</label>
+                    </div>
+                    
+
+                    <div class="input-group">
+                        <input type="radio" id="outro" name="objetivo" value="manter">
+                        <label for="manter">Manter</label>
+                    </div>
+                    
+                </div>
+
+                 <div>
+                    <label>Nível de atividade fisíca:</label><br>
+
+                    <div class="input-group"> 
+                        <input type="radio" id="sedentario" name="nivel" value="sedentario"  required>
+                        <label for="sedentario" > Sedentario </label>
+                    </div>
+                    
+
+                     <div class="input-group"> 
+                        <input type="radio" id="leve" name="nivel" value="leve">
+                        <label for="leve">Leve</label>    
+                    </div>
+                    
+
+                     <div class="input-group"> 
+                        <input type="radio" id="moderado" name="nivel" value="moderado">
+                        <label for="moderado">Moderado</label>  
+                    </div>
+                    
+
+                     <div class="input-group"> 
+                        <input type="radio" id="intenso" name="nivel" value="intenso">
+                        <label for="intenso">Intenso</label>    
+                    </div>
+                    
+                </div>
+
+                <div> 
+                    <button> Continuar </button>
+                </div>
+
+            </form>
+        </div>
+    </body>
+</html>
