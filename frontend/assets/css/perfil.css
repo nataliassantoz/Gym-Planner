@@ -1,0 +1,79 @@
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(134deg, #663f83 0%, #1d0331 100%);
+    background-attachment: fixed;
+    
+}
+
+.conteiner{
+    box-shadow: 0 2px 10px rgba(205, 131, 240, 0.1);
+    padding: 30px;
+    width: 500px;
+    height:  550px;
+    border-radius: 15px;
+    
+}
+
+.perfil{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    align-items: left;
+    gap: 18px;
+    color: rgb(255, 255, 255);
+
+}
+
+.perfil-titulo{
+    color: rgb(255, 255, 255);
+    font-size: 27px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.unit {
+    color: #ccc;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border: 2px solid #9e6bc2;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+input[type="radio"]:checked {
+    background-color: #bb79ed;
+}
+
+button {
+    background: #9e6bc2;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 1px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+button:hover {
+    background: #7d4b9e;
+}
+
+.input-group{
+    display: flex;
+    align-items: center;
+
+}
