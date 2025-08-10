@@ -19,11 +19,16 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
     private String email;
+
     private String nome;
+
     private String senha;
+
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipo;   
+    
     @OneToOne(mappedBy= "usuario")
     private Perfil perfil;
 

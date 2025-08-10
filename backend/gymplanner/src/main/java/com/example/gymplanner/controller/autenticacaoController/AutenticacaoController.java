@@ -1,5 +1,6 @@
 package com.example.gymplanner.controller.autenticacaoController;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +22,8 @@ import com.example.gymplanner.service.auth.AutenticacaoService;
 @RequestMapping("/auth")
 public class AutenticacaoController {
 
-    private final AutenticacaoService autenticacaoService;
+    @Autowired
+    private AutenticacaoService autenticacaoService;
 
     public AutenticacaoController(AutenticacaoService autenticacaoService) {
         this.autenticacaoService = autenticacaoService;
@@ -42,7 +44,8 @@ public class AutenticacaoController {
             LoginResponse resposta = new LoginResponse(
                 "Cadastro bem sucedido!",
                 novoUsuario.getNome(),
-                novoUsuario.getId()  //retorna o id pro front
+                novoUsuario.getId(),  //retorna o id pro front
+                false
             );
             return ResponseEntity.ok(resposta);
         }
@@ -58,10 +61,13 @@ public class AutenticacaoController {
         try{
            Usuario usuario =  autenticacaoService.login(request.getEmail(), request.getSenha());
 
+           boolean perfilCompleto = (usuario.getPerfil() != null); // true se já cadastrou perfil
+
            LoginResponse resposta = new LoginResponse(
             "Login bem sucedido!",
             usuario.getNome(),
-            usuario.getId()
+            usuario.getId(),
+            perfilCompleto 
         );
             return ResponseEntity.ok(resposta);
         }

@@ -2,6 +2,7 @@ package com.example.gymplanner.controller.perfilController;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,13 +19,17 @@ import com.example.gymplanner.entity.Perfil;
 import com.example.gymplanner.entity.Usuario;
 import com.example.gymplanner.repository.UsuarioRepository;
 import com.example.gymplanner.service.perfil.PerfilService;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.POST, RequestMethod.GET})
 @RequestMapping("/perfil")
 public class PerfilController {
 
-    private final PerfilService perfilService;
-    private final UsuarioRepository usuarioRepository;
+    @Autowired
+    private PerfilService perfilService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     public PerfilController(PerfilService perfilService, UsuarioRepository usuarioRepository) {
         this.perfilService = perfilService;

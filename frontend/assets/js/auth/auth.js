@@ -41,9 +41,7 @@ btnSubmit.addEventListener("click", async (e) => {
     const url = modo === "login" ? "http://localhost:8080/auth/login" : "http://localhost:8080/auth/registro";
 
 
-    const payload = modo === "login"
-    ? { email, senha }
-    : { nome, email, senha, tipo: "CLIENTE" };
+    const payload = modo === "login"  ? { email, senha } : { nome, email, senha, tipo: "CLIENTE" };
 
 
     try{
@@ -59,7 +57,18 @@ btnSubmit.addEventListener("click", async (e) => {
         const dados = await resposta.json();
 
         if(resposta.ok){
+
+            localStorage.setItem("usuarioId", dados.usuarioId);
+
             alert(dados.mensagem + "\nBem-vindo, " +  (dados.nome || nome));
+
+            if (modo === "cadastro") {
+                // Se acabou de se cadastrar, manda para a tela de completar perfil
+                window.location.href = "../perfil/Perfil.html";
+            } else {
+                // Se fez login, manda direto para o planner
+                window.location.href = "../planner/planner.html";
+            }
         }
         else{
             alert("Erro: " + (dados.erro || dados.message || "Tente novamente"));
@@ -68,6 +77,5 @@ btnSubmit.addEventListener("click", async (e) => {
     catch(error){
         alert("Erro na requisição" + error);
     }
-
 
 });
