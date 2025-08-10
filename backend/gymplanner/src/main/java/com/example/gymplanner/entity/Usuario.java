@@ -1,13 +1,18 @@
 package com.example.gymplanner.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.example.gymplanner.enums.TipoUsuario;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -41,4 +46,7 @@ public class Usuario {
     
     @OneToOne(mappedBy= "usuario")
     private Perfil perfil;
+
+    @OneToMany(mappedBy = "perfil", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Treino> treinos = new ArrayList<>();
 }

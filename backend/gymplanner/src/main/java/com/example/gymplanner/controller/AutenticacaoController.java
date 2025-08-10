@@ -1,6 +1,5 @@
 package com.example.gymplanner.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,17 +16,15 @@ import com.example.gymplanner.dto.RegistroRequest;
 import com.example.gymplanner.entity.Usuario;
 import com.example.gymplanner.service.AutenticacaoService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.POST, RequestMethod.GET})
 @RequestMapping("/auth")
+@RequiredArgsConstructor
 public class AutenticacaoController {
 
-    @Autowired
-    private AutenticacaoService autenticacaoService;
-
-    public AutenticacaoController(AutenticacaoService autenticacaoService) {
-        this.autenticacaoService = autenticacaoService;
-    }
+    private final AutenticacaoService autenticacaoService;
 
     @CrossOrigin(origins = "*")
     @PostMapping("/registro")

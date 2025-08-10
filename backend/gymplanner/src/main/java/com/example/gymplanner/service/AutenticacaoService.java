@@ -2,7 +2,6 @@ package com.example.gymplanner.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -11,10 +10,13 @@ import com.example.gymplanner.entity.Usuario;
 import com.example.gymplanner.enums.TipoUsuario;
 import com.example.gymplanner.repository.UsuarioRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class AutenticacaoService {
 
-    @Autowired
+    
     private UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
     

@@ -2,7 +2,6 @@ package com.example.gymplanner.service;
 
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.gymplanner.entity.Perfil;
@@ -12,10 +11,12 @@ import com.example.gymplanner.enums.Objetivo;
 import com.example.gymplanner.enums.Sexo;
 import com.example.gymplanner.repository.PerfilRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class PerfilService {
 
-    @Autowired
     private PerfilRepository perfilRepository;
 
     public PerfilService(PerfilRepository perfilRepository) {
