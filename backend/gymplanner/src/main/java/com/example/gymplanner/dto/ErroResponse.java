@@ -1,19 +1,17 @@
 package com.example.gymplanner.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ErroResponse {
     private String erro;
-
-    public ErroResponse(String erro) {
-        this.erro = erro;
-    }
-
-    public String getErro() {
-        return erro;
-    }
-
-    public void setErro(String erro) {
-        this.erro = erro;
-    }
 
 }

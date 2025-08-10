@@ -1,7 +1,8 @@
-package com.example.gymplanner.service.auth;
+package com.example.gymplanner.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,8 @@ import com.example.gymplanner.repository.UsuarioRepository;
 @Service
 public class AutenticacaoService {
 
-    private final UsuarioRepository usuarioRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
     
 
@@ -49,7 +51,6 @@ public class AutenticacaoService {
         if(emailUsuario.isPresent()){
             
             Usuario usuario = emailUsuario.get();
-
             //comparacao das senhas
             if(passwordEncoder.matches(senha, usuario.getSenha())){
                 System.out.println("Login bem-sucedido!");
@@ -67,12 +68,4 @@ public class AutenticacaoService {
     public Optional<Usuario> verificarEmail(String email){
         return usuarioRepository.findByEmail(email);
     }
-
-    
-
-
-
-    
-
-
 }

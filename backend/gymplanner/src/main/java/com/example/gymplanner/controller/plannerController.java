@@ -1,4 +1,4 @@
-package com.example.gymplanner.controller.plannerController;
+package com.example.gymplanner.controller;
 
 public class plannerController {
     

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GymPlanner</title>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        height: 100vh;
+    }
+    /* Sidebar */
+    .sidebar {
+        background-color: #222;
+        color: white;
+        width: 250px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 20px;
+    }
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: gray;
+        margin-bottom: 10px;
+    }
+    .username {
+        margin-bottom: 20px;
+    }
+    .menu-btn {
+        background-color: #ff6600;
+        color: white;
+        border: none;
+        padding: 10px;
+        margin: 5px;
+        width: 80%;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .menu-btn:hover {
+        background-color: #e65c00;
+    }
+
+    /* Main content */
+    .main {
+        flex: 1;
+        background-color: #f4f4f4;
+        padding: 20px;
+    }
+    .week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+    }
+    .day {
+        background: white;
+        border-radius: 8px;
+        padding: 10px;
+        min-height: 100px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .day h3 {
+        margin-top: 0;
+        font-size: 14px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+    }
+    .entry {
+        font-size: 12px;
+        margin: 3px 0;
+        padding: 3px;
+        border-left: 3px solid orange;
+        background: #fff8f0;
+        border-radius: 3px;
+    }
+
+    /* Modal */
+    .modal {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    .modal-content {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        width: 300px;
+    }
+</style>
+</head>
+<body>
+
+<div class="sidebar">
+    <div class="profile-pic"></div>
+    <div class="username">Usuário</div>
+    <button class="menu-btn" onclick="openModal('Treino')">🏋️ Treino</button>
+    <button class="menu-btn" onclick="openModal('Dieta')">🍽️ Dieta</button>
+    <button class="menu-btn">⚙️ Configurações</button>
+</div>
+
+<div class="main">
+    <h2>Meu Planejamento</h2>
+    <div class="week" id="week">
+        <div class="day" data-day="Segunda"><h3>Seg</h3></div>
+        <div class="day" data-day="Terça"><h3>Ter</h3></div>
+        <div class="day" data-day="Quarta"><h3>Qua</h3></div>
+        <div class="day" data-day="Quinta"><h3>Qui</h3></div>
+        <div class="day" data-day="Sexta"><h3>Sex</h3></div>
+        <div class="day" data-day="Sábado"><h3>Sáb</h3></div>
+        <div class="day" data-day="Domingo"><h3>Dom</h3></div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+        <h3 id="modal-title"></h3>
+        <label>Dia da semana:</label>
+        <select id="day-select">
+            <option>Segunda</option>
+            <option>Terça</option>
+            <option>Quarta</option>
+            <option>Quinta</option>
+            <option>Sexta</option>
+            <option>Sábado</option>
+            <option>Domingo</option>
+        </select>
+        <br><br>
+        <label>Descrição:</label>
+        <textarea id="desc" rows="3" style="width: 100%;"></textarea>
+        <br><br>
+        <button onclick="saveEntry()">Salvar</button>
+        <button onclick="closeModal()">Cancelar</button>
+    </div>
+</div>
+
+<script>
+    let currentType = '';
+
+    function openModal(type) {
+        currentType = type;
+        document.getElementById('modal-title').innerText = "Adicionar " + type;
+        document.getElementById('modal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('modal').style.display = 'none';
+        document.getElementById('desc').value = '';
+    }
+
+    function saveEntry() {
+        const day = document.getElementById('day-select').value;
+        const desc = document.getElementById('desc').value;
+        if(desc.trim() === '') return;
+        
+        const dayBox = document.querySelector(`.day[data-day="${day}"]`);
+        const div = document.createElement('div');
+        div.className = 'entry';
+        div.innerText = currentType + ': ' + desc;
+        dayBox.appendChild(div);
+
+        closeModal();
+    }
+</script>
+
+</body>
+</html>

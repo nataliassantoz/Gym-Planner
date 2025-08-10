@@ -10,10 +10,20 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 
 @Entity
 @Table(name= "usuario")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Usuario {
 
     @Id
@@ -31,64 +41,4 @@ public class Usuario {
     
     @OneToOne(mappedBy= "usuario")
     private Perfil perfil;
-
-    public Usuario() {} 
-
-    public Usuario(Long id, String email, String nome, String senha, TipoUsuario tipo,  Perfil perfil) {
-        this.id = id;
-        this.email = email;
-        this.nome = nome;
-        this.senha = senha;
-        this.tipo = tipo;
-        this.perfil = perfil;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public void setTipo(TipoUsuario tipo){
-        this.tipo = tipo;
-    }
-
-    public TipoUsuario getTipo(){
-        return tipo;
-    }
-
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
-    }
-    
 }

@@ -1,4 +1,4 @@
-package com.example.gymplanner.controller.perfilController;
+package com.example.gymplanner.controller;
 
 import java.util.Optional;
 
@@ -18,7 +18,7 @@ import com.example.gymplanner.dto.PerfilResponse;
 import com.example.gymplanner.entity.Perfil;
 import com.example.gymplanner.entity.Usuario;
 import com.example.gymplanner.repository.UsuarioRepository;
-import com.example.gymplanner.service.perfil.PerfilService;
+import com.example.gymplanner.service.PerfilService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.POST, RequestMethod.GET})

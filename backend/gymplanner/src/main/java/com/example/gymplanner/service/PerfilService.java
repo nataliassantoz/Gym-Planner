@@ -1,7 +1,8 @@
-package com.example.gymplanner.service.perfil;
+package com.example.gymplanner.service;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.gymplanner.entity.Perfil;
@@ -14,7 +15,8 @@ import com.example.gymplanner.repository.PerfilRepository;
 @Service
 public class PerfilService {
 
-    private final PerfilRepository perfilRepository;
+    @Autowired
+    private PerfilRepository perfilRepository;
 
     public PerfilService(PerfilRepository perfilRepository) {
         this.perfilRepository = perfilRepository;

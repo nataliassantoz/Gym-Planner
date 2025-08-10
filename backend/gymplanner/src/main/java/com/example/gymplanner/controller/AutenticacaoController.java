@@ -1,4 +1,4 @@
-package com.example.gymplanner.controller.autenticacaoController;
+package com.example.gymplanner.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,7 @@ import com.example.gymplanner.dto.LoginRequest;
 import com.example.gymplanner.dto.LoginResponse;
 import com.example.gymplanner.dto.RegistroRequest;
 import com.example.gymplanner.entity.Usuario;
-import com.example.gymplanner.service.auth.AutenticacaoService;
+import com.example.gymplanner.service.AutenticacaoService;
 
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.POST, RequestMethod.GET})
