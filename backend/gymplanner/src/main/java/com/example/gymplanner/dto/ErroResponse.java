@@ -1,5 +1,6 @@
 package com.example.gymplanner.dto;
 
+
 public class ErroResponse {
     private String erro;
 
