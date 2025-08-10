@@ -36,6 +36,11 @@ body {
     align-items: center;
     justify-content: center;
 }
+.titulo {
+    width: 100%;
+    text-align: center;
+}
+
 
 .input-group {
     display: flex;

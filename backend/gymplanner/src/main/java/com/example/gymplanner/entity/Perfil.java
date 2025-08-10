@@ -22,13 +22,19 @@ public class Perfil {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+
     private Double altura;
+
     private Double peso;
+
     private Integer idade;
+
     @Enumerated(EnumType.STRING)
     private Sexo sexo;
+
     @Enumerated(EnumType.STRING)
     private Objetivo objetivo;
+    
     @Enumerated(EnumType.STRING)
     private NivelAtividade nivel;
 
@@ -114,5 +120,4 @@ public class Perfil {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
-
 }

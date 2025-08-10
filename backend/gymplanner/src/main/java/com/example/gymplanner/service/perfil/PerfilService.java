@@ -34,7 +34,6 @@ public class PerfilService {
         return perfilRepository.save(perfil);
     }
 
-
     public Optional<Perfil> encontrarPerfil(Long id){ //deve chamar o metodo encontrar id no controller e depois setar o usuario e chamar o metodo cadastrar perfil
 
         Optional<Perfil> perfilEncontrado = perfilRepository.findById(id);
@@ -61,7 +60,7 @@ public class PerfilService {
         }
     }
 
-     public Optional<Perfil> atualizarIdade(Long id, Integer novaIdade){
+    public Optional<Perfil> atualizarIdade(Long id, Integer novaIdade){
         
         Optional<Perfil> perfilEncontrado = encontrarPerfil(id);
         if(perfilEncontrado.isPresent()){
@@ -75,7 +74,7 @@ public class PerfilService {
         }
     }
 
-  public Optional<Perfil> atualizarObjetivo(Long id, Objetivo objetivo){
+    public Optional<Perfil> atualizarObjetivo(Long id, Objetivo objetivo){
         
         Optional<Perfil> perfilEncontrado = encontrarPerfil(id);
         if(perfilEncontrado.isPresent()){
@@ -89,7 +88,7 @@ public class PerfilService {
         }
     }
 
-      public Optional<Perfil> atualizarNivelAtividade(Long id, NivelAtividade nivel){
+    public Optional<Perfil> atualizarNivelAtividade(Long id, NivelAtividade nivel){
         
         Optional<Perfil> perfilEncontrado = encontrarPerfil(id);
         if(perfilEncontrado.isPresent()){

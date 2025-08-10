@@ -1,7 +1,12 @@
 package com.example.gymplanner.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+
 public class LoginRequest {
 
+    @NotBlank(message = "O e-mail é obrigatório")
+    @Email(message = "E-mail inválido")
     private String email;
     private String senha;
     //private String nome;
